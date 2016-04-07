@@ -3,7 +3,7 @@ Java tools to measure S3 latency, transfer rate, throughput, etc.
 
 ## Installation
 A shaded jar containing the tools can be simply built from source with maven and Java 8.  (They probably
-will build on Java 7, but the POM specified JDK 1.8.)
+will build on Java 7, but the POM specifies JDK 1.8.)
 ```
 git clone https://github.com/talkingscott/s3testj.git
 mvn package
@@ -24,5 +24,5 @@ java -cp target/s3testj-0.0.1-SNAPSHOT.jar com.scottnichol.s3testj.PeriodicGet y
 
 ## Gotchas
 The big one right now is that these assume objects with a specific set of keys already exist in your
-bucket.  They do exist if you have run the node.js tools at http://github.com/talkingscott/s3testj.
+bucket.  They do exist if you have run the node.js tools at http://github.com/talkingscott/s3test.
 Hopefully, I will add a PutMany and/or PutManyMT tool to this repo soon.
