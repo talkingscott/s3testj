@@ -11,6 +11,7 @@ import java.util.TimeZone;
 
 import com.amazonaws.AmazonClientException;
 import com.amazonaws.AmazonServiceException;
+import com.amazonaws.ClientConfiguration;
 import com.amazonaws.regions.Region;
 import com.amazonaws.regions.Regions;
 import com.amazonaws.services.s3.AmazonS3;
@@ -28,7 +29,11 @@ public final class S3Utils {
 	private S3Utils() { }
 
 	public static AmazonS3 createClient() {
-		AmazonS3 s3 = new AmazonS3Client();
+		ClientConfiguration config = new ClientConfiguration()
+			.withMaxErrorRetry(1)
+			.withConnectionTimeout(5000)
+			.withThrottledRetries(true);
+		AmazonS3 s3 = new AmazonS3Client(config);
 		Region region = Region.getRegion(Regions.US_EAST_1);
 		s3.setRegion(region);
 
